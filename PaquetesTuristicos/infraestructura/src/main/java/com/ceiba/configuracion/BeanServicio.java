@@ -1,5 +1,9 @@
 package com.ceiba.configuracion;
 
+import com.ceiba.lugarturistico.puerto.repositorio.RepositorioLugarTuristico;
+import com.ceiba.lugarturistico.servicio.ServicioActualizarLugarTuristico;
+import com.ceiba.lugarturistico.servicio.ServicioCrearLugarTuristico;
+import com.ceiba.lugarturistico.servicio.ServicioEliminarLugarTuristico;
 import com.ceiba.usuario.puerto.repositorio.RepositorioUsuario;
 import com.ceiba.usuario.servicio.ServicioActualizarUsuario;
 import com.ceiba.usuario.servicio.ServicioCrearUsuario;
@@ -24,6 +28,19 @@ public class BeanServicio {
     public ServicioActualizarUsuario servicioActualizarUsuario(RepositorioUsuario repositorioUsuario) {
         return new ServicioActualizarUsuario(repositorioUsuario);
     }
-	
 
+    @Bean
+    public ServicioCrearLugarTuristico servicioCrearLugarTuristico(RepositorioLugarTuristico repositorioLugarTuristico) {
+        return new ServicioCrearLugarTuristico(repositorioLugarTuristico);
+    }
+
+    @Bean
+    public ServicioActualizarLugarTuristico servicioActualizarLugarTuristico(RepositorioLugarTuristico repositorioLugarTuristico) {
+        return new ServicioActualizarLugarTuristico(repositorioLugarTuristico);
+    }
+
+    @Bean
+    public ServicioEliminarLugarTuristico servicioEliminarLugarTuristico(RepositorioLugarTuristico repositorioLugarTuristico) {
+        return new ServicioEliminarLugarTuristico(repositorioLugarTuristico);
+    }
 }

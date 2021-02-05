@@ -1,0 +1,1 @@
+insert into lugarturistico (nombre, descripcion) values (:nombre, :descripcion)
