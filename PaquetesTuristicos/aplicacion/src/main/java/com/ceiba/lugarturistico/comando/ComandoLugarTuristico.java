@@ -14,4 +14,6 @@ public class ComandoLugarTuristico {
     private Long id;
     private String nombre;
     private String descripcion;
+    private Long idMunicipio;
+    private String direccion;
 }

@@ -11,7 +11,9 @@ public class FabricaLugarTuristico {
         return new LugarTuristico(
                 comandoLugarTuristico.getId(),
                 comandoLugarTuristico.getNombre(),
-                comandoLugarTuristico.getDescripcion()
+                comandoLugarTuristico.getDescripcion(),
+                comandoLugarTuristico.getIdMunicipio(),
+                comandoLugarTuristico.getDireccion()
         );
     }
 
