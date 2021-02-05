@@ -1,0 +1,2 @@
+select id,nombre,descripcion, fecha_reserva, cantidad_maxima_personas, cantidad_maxima_reservas, precio_por_persona
+from paqueteturistico

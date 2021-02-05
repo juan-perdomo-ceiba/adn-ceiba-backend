@@ -1,0 +1,2 @@
+insert into paqueteturistico (nombre, descripcion, fecha_reserva, cantidad_maxima_personas, cantidad_maxima_reservas, precio_por_persona)
+values (:nombre, :descripcion, :fechaReserva, :cantidadMaximaPersonas, :cantidadMaximaReservas, :precioPorPersona)
