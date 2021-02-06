@@ -20,8 +20,8 @@ public class ServicioCrearLugarTuristico {
         return this.repositorioLugarTuristico.crear(lugarTuristico);
     }
 
-    private void validarExistenciaPrevia(LugarTuristico LugarTuristico) {
-        boolean existe = this.repositorioLugarTuristico.existeExcluyendoId(LugarTuristico.getId(),LugarTuristico.getNombre());
+    private void validarExistenciaPrevia(LugarTuristico lugarTuristico) {
+        boolean existe = this.repositorioLugarTuristico.existeExcluyendoId(lugarTuristico.getId(),lugarTuristico.getNombre());
         if(existe) {
             throw new ExcepcionDuplicidad(EL_LUGAR_TURISTICO_YA_EXISTE_EN_EL_SISTEMA);
         }

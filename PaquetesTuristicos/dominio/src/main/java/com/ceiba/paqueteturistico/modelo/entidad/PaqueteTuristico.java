@@ -17,6 +17,7 @@ public class PaqueteTuristico {
     private static final String SE_DEBE_INGRESAR_LA_CANTIDAD_MAXIMA_PERSONAS = "Se debe ingresar la cantidad maxima de personas";
     private static final String SE_DEBE_INGRESAR_LA_CANTIDAD_MAXIMA_RESERVAS = "Se debe ingresar la cantidad maxima de reservas";
     private static final String SE_DEBE_INGRESAR_EL_PRECIO_POR_PERSONA = "Se debe ingresar el precio por persona";
+    private static final String SE_DEBE_INGRESAR_EL_LUGAR_TURUSTICO = "Se debe ingresar el lugarTuristico";
 
     private Long id;
     private String nombre;
@@ -25,14 +26,17 @@ public class PaqueteTuristico {
     private int cantidadMaximaPersonas;
     private int cantidadMaximaReservas;
     private BigDecimal precioPorPersona;
+    private Long idLugarTuristico;
 
-    public PaqueteTuristico(Long id, String nombre, String descripcion, LocalDate fechaReserva, int cantidadMaximaPersonas, int cantidadMaximaReservas, BigDecimal precioPorPersona) {
+    public PaqueteTuristico(Long id, String nombre, String descripcion, LocalDate fechaReserva, int cantidadMaximaPersonas, int cantidadMaximaReservas, BigDecimal precioPorPersona, Long idLugarTuristico) {
         validarObligatorio(nombre, SE_DEBE_INGRESAR_EL_NOMBRE);
         validarObligatorio(descripcion, SE_DEBE_INGRESAR_LA_DESCRIPCION);
         validarObligatorio(fechaReserva, SE_DEBE_INGRESAR_LA_FECHA_RESERVA);
         validarObligatorio(cantidadMaximaPersonas, SE_DEBE_INGRESAR_LA_CANTIDAD_MAXIMA_PERSONAS);
         validarObligatorio(cantidadMaximaReservas, SE_DEBE_INGRESAR_LA_CANTIDAD_MAXIMA_RESERVAS);
         validarObligatorio(precioPorPersona, SE_DEBE_INGRESAR_EL_PRECIO_POR_PERSONA);
+        validarObligatorio(idLugarTuristico, SE_DEBE_INGRESAR_EL_LUGAR_TURUSTICO);
+
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -40,5 +44,6 @@ public class PaqueteTuristico {
         this.cantidadMaximaPersonas = cantidadMaximaPersonas;
         this.cantidadMaximaReservas = cantidadMaximaReservas;
         this.precioPorPersona = precioPorPersona;
+        this.idLugarTuristico = idLugarTuristico;
     }
 }

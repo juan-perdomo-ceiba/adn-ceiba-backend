@@ -22,4 +22,5 @@ public class ComandoPaqueteTuristico {
     private int cantidadMaximaPersonas;
     private int cantidadMaximaReservas;
     private BigDecimal precioPorPersona;
+    private Long idLugarTuristico;
 }

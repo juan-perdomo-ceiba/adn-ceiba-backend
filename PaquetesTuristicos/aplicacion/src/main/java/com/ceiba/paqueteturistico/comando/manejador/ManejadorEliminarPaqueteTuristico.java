@@ -14,7 +14,7 @@ public class ManejadorEliminarPaqueteTuristico implements ManejadorComando<Long>
         this.servicioEliminarPaqueteTuristico = servicioEliminarPaqueteTuristico;
     }
 
-    public void ejecutar(Long idUsuario) {
-        this.servicioEliminarPaqueteTuristico.ejecutar(idUsuario);
+    public void ejecutar(Long idPaqueteTuristico) {
+        this.servicioEliminarPaqueteTuristico.ejecutar(idPaqueteTuristico);
     }
 }
