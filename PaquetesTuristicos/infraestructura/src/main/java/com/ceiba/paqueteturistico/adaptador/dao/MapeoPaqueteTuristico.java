@@ -16,13 +16,12 @@ public class MapeoPaqueteTuristico implements RowMapper<DtoPaqueteTuristico>, Ma
         Long id = resultSet.getLong("id");
         String nombre = resultSet.getString("nombre");
         String descripcion = resultSet.getString("descripcion");
-        LocalDate fechaReserva = extraerLocalDate(resultSet, "fecha_reserva");
         int cantidadMaximaPersonas = resultSet.getInt("cantidad_maxima_personas");
         int cantidadMaximaReservas = resultSet.getInt("cantidad_maxima_reservas");
         BigDecimal precioPorPersona = resultSet.getBigDecimal("precio_por_persona");
         Long idLugarTuristico = resultSet.getLong("id_lugar_turistico");
 
-        return new DtoPaqueteTuristico(id,nombre,descripcion,fechaReserva, cantidadMaximaPersonas, cantidadMaximaReservas, precioPorPersona, idLugarTuristico);
+        return new DtoPaqueteTuristico(id,nombre,descripcion, cantidadMaximaPersonas, cantidadMaximaReservas, precioPorPersona, idLugarTuristico);
     }
 
 }

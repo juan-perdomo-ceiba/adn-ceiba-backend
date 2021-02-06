@@ -30,7 +30,6 @@ create table paqueteturistico (
  id int(11) not null auto_increment,
  nombre varchar(100) not null,
  descripcion varchar(500) not null,
- fecha_reserva date not null,
  cantidad_maxima_personas int(11) not null,
  cantidad_maxima_reservas int(11) not null,
  precio_por_persona double(16,4) not null,

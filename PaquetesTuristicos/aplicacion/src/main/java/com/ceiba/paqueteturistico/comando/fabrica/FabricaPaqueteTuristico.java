@@ -12,7 +12,6 @@ public class FabricaPaqueteTuristico {
                 comandoPaqueteTuristico.getId(),
                 comandoPaqueteTuristico.getNombre(),
                 comandoPaqueteTuristico.getDescripcion(),
-                comandoPaqueteTuristico.getFechaReserva(),
                 comandoPaqueteTuristico.getCantidadMaximaPersonas(),
                 comandoPaqueteTuristico.getCantidadMaximaReservas(),
                 comandoPaqueteTuristico.getPrecioPorPersona(),
