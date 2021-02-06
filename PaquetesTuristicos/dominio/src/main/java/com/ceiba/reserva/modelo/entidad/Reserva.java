@@ -56,4 +56,7 @@ public class Reserva {
         this.precio = precio;
     }
 
+    public void setPrecio(BigDecimal precio) {
+        this.precio = precio;
+    }
 }
