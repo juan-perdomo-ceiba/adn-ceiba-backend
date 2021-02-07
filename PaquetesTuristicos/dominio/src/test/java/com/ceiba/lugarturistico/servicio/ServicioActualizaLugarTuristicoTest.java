@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 public class ServicioActualizaLugarTuristicoTest {
 
     @Test
-    public void validarUsuarioExistenciaPreviaTest() {
+    public void validarLugarTuristicoExistenciaPreviaTest() {
         // arrange
         LugarTuristico lugarTuristico = new LugarTuristicoTestDataBuilder().conId(1L).build();
         RepositorioLugarTuristico repositorioLugarTuristico = Mockito.mock(RepositorioLugarTuristico.class);
