@@ -11,7 +11,7 @@ import java.util.UUID;
 
 public class ServicioCrearReserva {
 
-    private static final String LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA = "La reserva ya existe en el sistema";
+    public static final String LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA = "La reserva ya existe en el sistema";
     private static final int MINIMA_CANTIDAD_PERSONAS_APLICA_DESCUENTO = 5;
 
     private final RepositorioReserva repositorioReserva;

@@ -7,7 +7,7 @@ import com.ceiba.lugarturistico.modelo.entidad.LugarTuristico;
 
 public class ServicioCrearLugarTuristico {
 
-    private static final String EL_LUGAR_TURISTICO_YA_EXISTE_EN_EL_SISTEMA = "El lugar turistico ya existe en el sistema";
+    public static final String EL_LUGAR_TURISTICO_YA_EXISTE_EN_EL_SISTEMA = "El lugar turistico ya existe en el sistema";
 
     private final RepositorioLugarTuristico repositorioLugarTuristico;
 

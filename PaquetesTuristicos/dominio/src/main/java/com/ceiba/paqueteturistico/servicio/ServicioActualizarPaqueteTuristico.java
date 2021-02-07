@@ -6,7 +6,7 @@ import com.ceiba.paqueteturistico.puerto.repositorio.RepositorioPaqueteTuristico
 
 public class ServicioActualizarPaqueteTuristico {
 
-    private static final String EL_PAQUETE_TURISTICO_YA_EXISTE_EN_EL_SISTEMA = "El paquete turistico ya existe en el sistema";
+    public static final String EL_PAQUETE_TURISTICO_YA_EXISTE_EN_EL_SISTEMA = "El paquete turistico ya existe en el sistema";
 
     private final RepositorioPaqueteTuristico repositorioPaqueteTuristico;
 
