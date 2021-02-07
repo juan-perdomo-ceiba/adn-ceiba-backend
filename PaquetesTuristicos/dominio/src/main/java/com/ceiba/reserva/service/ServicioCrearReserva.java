@@ -7,9 +7,11 @@ import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 import com.ceiba.reserva.util.DateUtil;
 import com.ceiba.reserva.util.DescuentoCobroUtil;
 
+import java.util.UUID;
+
 public class ServicioCrearReserva {
 
-    private static final String LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA = "La reserva ya existe en el sistema";
+    public static final String LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA = "La reserva ya existe en el sistema";
     private static final int MINIMA_CANTIDAD_PERSONAS_APLICA_DESCUENTO = 5;
 
     private final RepositorioReserva repositorioReserva;
@@ -25,6 +27,7 @@ public class ServicioCrearReserva {
         aplicarDescuentoPorCantidadPersonas(reserva);
         aplicarDescuentoPorDiaReserva(reserva);
         aplicarCobroPorDiaFestivo(reserva);
+        asignarIdentificadorReserva(reserva);
         return this.repositorioReserva.crear(reserva);
     }
 
@@ -52,5 +55,9 @@ public class ServicioCrearReserva {
         if(esFestivo) {
             reserva.setPrecio(DescuentoCobroUtil.aplicarCobro(reserva.getPrecio(), DescuentoCobroUtil.VEINTE_PORCIENTO));
         }
+    }
+
+    private void asignarIdentificadorReserva(Reserva reserva) {
+        reserva.setIdentificadorReserva(UUID.randomUUID().toString());
     }
 }

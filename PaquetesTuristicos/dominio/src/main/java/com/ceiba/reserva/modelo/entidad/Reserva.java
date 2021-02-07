@@ -59,4 +59,8 @@ public class Reserva {
     public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
+
+    public void setIdentificadorReserva(String identificadorReserva) {
+        this.identificadorReserva = identificadorReserva;
+    }
 }

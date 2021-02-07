@@ -6,7 +6,7 @@ import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 
 public class ServicioActualizarReserva {
 
-    private static final String LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA = "La reserva ya existe en el sistema";
+    public static final String LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA = "La reserva ya existe en el sistema";
 
     private final RepositorioReserva repositorioReserva;
 
