@@ -13,7 +13,7 @@ create table municipio (
  primary key (id)
 );
 
-INSERT INTO `reservasejecafetero`.`municipio` (`id`,`nombre`, `codigo`) VALUES (1, 'Armenia', '001');
+INSERT INTO municipio (id, nombre, codigo) VALUES (1, 'Armenia', '001');
 
 create table lugarturistico (
  id int(11) not null auto_increment,
@@ -32,7 +32,7 @@ create table paqueteturistico (
  descripcion varchar(500) not null,
  cantidad_maxima_personas int(11) not null,
  cantidad_maxima_reservas int(11) not null,
- precio_por_persona double(16,4) not null,
+ precio_por_persona DECIMAL(16,4) not null,
  id_lugar_turistico int(11) not null,
  primary key (id)
 );
@@ -50,7 +50,7 @@ create table reserva (
  id_paquete_turistico int(11) not null,
  observaciones varchar(600),
  identificador_reserva varchar(100),
- precio double(16,4) not null,
+ precio DECIMAL(16,4) not null,
  primary key (id)
 );
 
