@@ -2,18 +2,12 @@ package com.ceiba.paqueteturistico.controlador;
 
 import com.ceiba.paqueteturistico.consulta.ManejadorListarPaquetesTuristicos;
 import com.ceiba.paqueteturistico.modelo.dto.DtoPaqueteTuristico;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/paquetes-turisticos")
-@Api(tags={"Controlador consulta paquete turistico"})
-public class ConsultaControladorPaqueteTuristico {
+public class ConsultaControladorPaqueteTuristico implements ConsultaControlador{
 
     private final ManejadorListarPaquetesTuristicos manejadorListarPaquetesTuristicos;
 
@@ -21,10 +15,8 @@ public class ConsultaControladorPaqueteTuristico {
         this.manejadorListarPaquetesTuristicos = manejadorListarPaquetesTuristicos;
     }
 
-    @GetMapping
-    @ApiOperation("Listar paquetes turisticos")
+    @Override
     public List<DtoPaqueteTuristico> listar() {
         return this.manejadorListarPaquetesTuristicos.ejecutar();
     }
-
 }
