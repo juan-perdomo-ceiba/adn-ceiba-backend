@@ -3,7 +3,7 @@ package com.ceiba.reserva.servicio;
 import com.ceiba.BasePrueba;
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.reserva.modelo.entidad.Reserva;
-import com.ceiba.reserva.puerto.dao.DaoFestivo;
+import com.ceiba.reserva.puerto.repositorio.RepositorioFestivo;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 import com.ceiba.reserva.service.ServicioCrearReserva;
 import com.ceiba.reserva.servicio.testdatabuilder.ReservaTestDataBuilder;
@@ -17,7 +17,7 @@ public class ServicioCrearReservaTest {
         // arrange
         Reserva reserva = new ReservaTestDataBuilder().build();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
-        DaoFestivo daoFestivo = Mockito.mock(DaoFestivo.class);
+        RepositorioFestivo daoFestivo = Mockito.mock(RepositorioFestivo.class);
         Mockito.when(repositorioReserva.existe(Mockito.anyString())).thenReturn(true);
         ServicioCrearReserva servicioCrearReserva = new ServicioCrearReserva(repositorioReserva, daoFestivo);
         // act - assert

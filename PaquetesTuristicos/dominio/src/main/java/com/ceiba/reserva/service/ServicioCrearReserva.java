@@ -2,7 +2,7 @@ package com.ceiba.reserva.service;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.reserva.modelo.entidad.Reserva;
-import com.ceiba.reserva.puerto.dao.DaoFestivo;
+import com.ceiba.reserva.puerto.repositorio.RepositorioFestivo;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
 import com.ceiba.reserva.util.DateUtil;
 import com.ceiba.reserva.util.DescuentoCobroUtil;
@@ -15,15 +15,16 @@ public class ServicioCrearReserva {
     private static final int MINIMA_CANTIDAD_PERSONAS_APLICA_DESCUENTO = 5;
 
     private final RepositorioReserva repositorioReserva;
-    private final DaoFestivo daoFestivo;
+    private final RepositorioFestivo daoFestivo;
 
-    public ServicioCrearReserva(RepositorioReserva repositorioReserva, DaoFestivo daoFestivo) {
+    public ServicioCrearReserva(RepositorioReserva repositorioReserva, RepositorioFestivo daoFestivo) {
         this.repositorioReserva = repositorioReserva;
         this.daoFestivo = daoFestivo;
     }
 
     public Long ejecutar(Reserva reserva) {
         validarExistenciaPrevia(reserva);
+        validarDisponibilidadReserva(reserva);
         aplicarDescuentoPorCantidadPersonas(reserva);
         aplicarDescuentoPorDiaReserva(reserva);
         aplicarCobroPorDiaFestivo(reserva);
@@ -36,6 +37,10 @@ public class ServicioCrearReserva {
         if(existe) {
             throw new ExcepcionDuplicidad(LA_RESERVA_YA_EXISTE_EN_EL_SISTEMA);
         }
+    }
+
+    private void validarDisponibilidadReserva(Reserva reserva) {
+
     }
 
     private void aplicarDescuentoPorCantidadPersonas(Reserva reserva) {

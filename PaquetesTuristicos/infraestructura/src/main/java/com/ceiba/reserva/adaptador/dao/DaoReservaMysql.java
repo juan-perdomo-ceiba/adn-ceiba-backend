@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class DaoPaqueteReservaMysql implements DaoReserva {
+public class DaoReservaMysql implements DaoReserva {
 
     private static final String NAMESPACE = "reserva";
 
@@ -18,7 +18,7 @@ public class DaoPaqueteReservaMysql implements DaoReserva {
     @SqlStatement(namespace = NAMESPACE, value="listar")
     private static String sqlListar;
 
-    public DaoPaqueteReservaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
+    public DaoReservaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
 
