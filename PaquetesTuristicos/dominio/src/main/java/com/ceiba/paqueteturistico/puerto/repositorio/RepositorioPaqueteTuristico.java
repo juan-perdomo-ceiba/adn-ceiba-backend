@@ -13,4 +13,6 @@ public interface RepositorioPaqueteTuristico {
     boolean existe(String nombre);
 
     boolean existeExcluyendoId(Long id,String nombre);
+
+    PaqueteTuristico obtener(Long idPaqueteTuristico);
 }

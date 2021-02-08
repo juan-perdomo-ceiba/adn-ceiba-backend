@@ -4,7 +4,6 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.paqueteturistico.modelo.dto.DtoPaqueteTuristico;
 import com.ceiba.paqueteturistico.puerto.dao.DaoPaqueteTurisico;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,9 +18,6 @@ public class DaoPaqueteTuristicoMysql implements DaoPaqueteTurisico {
     @SqlStatement(namespace = NAMESPACE, value="listar")
     private static String sqlListar;
 
-    @SqlStatement(namespace = NAMESPACE, value="detallar")
-    private static String sqlDetallar;
-
     public DaoPaqueteTuristicoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -31,10 +27,4 @@ public class DaoPaqueteTuristicoMysql implements DaoPaqueteTurisico {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoPaqueteTuristico());
     }
 
-    @Override
-    public DtoPaqueteTuristico detallar(Long idPaqueteTuristico) {
-        MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("idPaqueteTuristico", idPaqueteTuristico);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetallar, paramSource, new MapeoPaqueteTuristico());
-    }
 }

@@ -2,6 +2,7 @@ package com.ceiba.paqueteturistico.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
+import com.ceiba.paqueteturistico.modelo.dto.DtoPaqueteTuristico;
 import com.ceiba.paqueteturistico.modelo.entidad.PaqueteTuristico;
 import com.ceiba.paqueteturistico.puerto.repositorio.RepositorioPaqueteTuristico;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
@@ -28,6 +29,9 @@ public class RepositorioPaqueteTuristicoMysql implements RepositorioPaqueteTuris
 
     @SqlStatement(namespace = NAMESPACE, value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
+
+    @SqlStatement(namespace = NAMESPACE, value="detallar")
+    private static String sqlDetallar;
 
     public RepositorioPaqueteTuristicoMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
@@ -66,5 +70,12 @@ public class RepositorioPaqueteTuristicoMysql implements RepositorioPaqueteTuris
         paramSource.addValue("nombre", nombre);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public PaqueteTuristico obtener(Long idPaqueteTuristico) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idPaqueteTuristico", idPaqueteTuristico);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetallar, paramSource, new MapeoPaqueteTuristico());
     }
 }

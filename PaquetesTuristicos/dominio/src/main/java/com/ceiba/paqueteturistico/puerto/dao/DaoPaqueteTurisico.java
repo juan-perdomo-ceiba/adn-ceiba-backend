@@ -5,6 +5,4 @@ import java.util.List;
 
 public interface DaoPaqueteTurisico {
     List<DtoPaqueteTuristico> listar();
-
-    DtoPaqueteTuristico detallar(Long idPaqueteTuristico);
 }

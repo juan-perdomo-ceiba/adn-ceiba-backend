@@ -2,9 +2,8 @@ package com.ceiba.reserva.service;
 
 import com.ceiba.dominio.excepcion.ExcepcionDuplicidad;
 import com.ceiba.dominio.excepcion.ExcepcionReservaNoDisponible;
-import com.ceiba.paqueteturistico.modelo.dto.DtoPaqueteTuristico;
 import com.ceiba.paqueteturistico.modelo.entidad.PaqueteTuristico;
-import com.ceiba.paqueteturistico.puerto.dao.DaoPaqueteTurisico;
+import com.ceiba.paqueteturistico.puerto.repositorio.RepositorioPaqueteTuristico;
 import com.ceiba.reserva.modelo.entidad.Reserva;
 import com.ceiba.reserva.puerto.repositorio.RepositorioFestivo;
 import com.ceiba.reserva.puerto.repositorio.RepositorioReserva;
@@ -21,12 +20,12 @@ public class ServicioCrearReserva {
 
     private final RepositorioReserva repositorioReserva;
     private final RepositorioFestivo repositorioFestivo;
-    private final DaoPaqueteTurisico daoPaqueteTurisico;
+    private final RepositorioPaqueteTuristico repositorioPaqueteTuristico;
 
-    public ServicioCrearReserva(RepositorioReserva repositorioReserva, RepositorioFestivo repositorioFestivo, DaoPaqueteTurisico daoPaqueteTurisico) {
+    public ServicioCrearReserva(RepositorioReserva repositorioReserva, RepositorioFestivo repositorioFestivo, RepositorioPaqueteTuristico repositorioPaqueteTuristico) {
         this.repositorioReserva = repositorioReserva;
         this.repositorioFestivo = repositorioFestivo;
-        this.daoPaqueteTurisico = daoPaqueteTurisico;
+        this.repositorioPaqueteTuristico = repositorioPaqueteTuristico;
     }
 
     public Long ejecutar(Reserva reserva) {
@@ -50,7 +49,7 @@ public class ServicioCrearReserva {
         int cantidadReservasExistentes = repositorioReserva.cantidadReservasPorPaqueteTuristico(reserva.getIdPaqueteTuristico());
         int cantidadPersonasEnReservasExistentes = repositorioReserva.cantidadPersonasEnReservasPorPaqueteTuristico(reserva.getIdPaqueteTuristico());
 
-        DtoPaqueteTuristico paqueteTuristico = daoPaqueteTurisico.detallar(reserva.getIdPaqueteTuristico());
+        PaqueteTuristico paqueteTuristico = repositorioPaqueteTuristico.obtener(reserva.getIdPaqueteTuristico());
 
         if(cantidadReservasExistentes >= paqueteTuristico.getCantidadMaximaReservas() || cantidadPersonasEnReservasExistentes + reserva.getNumeroPersonas() > paqueteTuristico.getCantidadMaximaPersonas()) {
             throw new ExcepcionReservaNoDisponible(NO_HAY_RERVAS_DISPONIBLES);
