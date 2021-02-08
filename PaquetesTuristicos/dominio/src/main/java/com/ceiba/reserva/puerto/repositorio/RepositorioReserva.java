@@ -14,4 +14,7 @@ public interface RepositorioReserva {
 
     boolean existeExcluyendoId(Long id,String nombre);
 
+    int cantidadReservasPorPaqueteTuristico(Long idPaqueteTuristico);
+
+    int cantidadPersonasEnReservasPorPaqueteTuristico(Long idPaqueteTuristico);
 }

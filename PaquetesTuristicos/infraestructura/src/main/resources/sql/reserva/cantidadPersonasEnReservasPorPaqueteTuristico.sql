@@ -1,0 +1,1 @@
+select SUM(numero_personas) from reserva where id_paquete_turistico = :idPaqueteTuristico

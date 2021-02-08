@@ -4,6 +4,7 @@ import com.ceiba.lugarturistico.puerto.repositorio.RepositorioLugarTuristico;
 import com.ceiba.lugarturistico.servicio.ServicioActualizarLugarTuristico;
 import com.ceiba.lugarturistico.servicio.ServicioCrearLugarTuristico;
 import com.ceiba.lugarturistico.servicio.ServicioEliminarLugarTuristico;
+import com.ceiba.paqueteturistico.puerto.dao.DaoPaqueteTurisico;
 import com.ceiba.paqueteturistico.puerto.repositorio.RepositorioPaqueteTuristico;
 import com.ceiba.paqueteturistico.servicio.ServicioActualizarPaqueteTuristico;
 import com.ceiba.paqueteturistico.servicio.ServicioCrearPaqueteTuristico;
@@ -69,8 +70,8 @@ public class BeanServicio {
     }
 
     @Bean
-    public ServicioCrearReserva servicioCrearReserva(RepositorioReserva repositorioReserva, RepositorioFestivo daoFestivo) {
-        return new ServicioCrearReserva(repositorioReserva, daoFestivo);
+    public ServicioCrearReserva servicioCrearReserva(RepositorioReserva repositorioReserva, RepositorioFestivo repositorioFestivo, DaoPaqueteTurisico daoPaqueteTurisico) {
+        return new ServicioCrearReserva(repositorioReserva, repositorioFestivo, daoPaqueteTurisico);
     }
 
     @Bean

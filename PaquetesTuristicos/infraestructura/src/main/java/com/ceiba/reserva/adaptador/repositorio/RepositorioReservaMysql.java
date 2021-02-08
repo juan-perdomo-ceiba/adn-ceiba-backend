@@ -29,6 +29,12 @@ public class RepositorioReservaMysql implements RepositorioReserva {
     @SqlStatement(namespace = NAMESPACE, value="existeExcluyendoId")
     private static String sqlExisteExcluyendoId;
 
+    @SqlStatement(namespace = NAMESPACE, value = "cantidadReservasPorPaqueteTuristico.sql")
+    private static String sqlCantidadReservasPorPaqueteTuristico;
+
+    @SqlStatement(namespace = NAMESPACE, value = "cantidadReservasPorPaqueteTuristico.sql")
+    private static String sqlCantidadPersonasEnReservasPorPaqueteTuristico;
+
     public RepositorioReservaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -66,5 +72,19 @@ public class RepositorioReservaMysql implements RepositorioReserva {
         paramSource.addValue("nombre", nombre);
 
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlExisteExcluyendoId,paramSource, Boolean.class);
+    }
+
+    @Override
+    public int cantidadReservasPorPaqueteTuristico(Long idPaqueteTuristico) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idPaqueteTuristico", idPaqueteTuristico);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlCantidadReservasPorPaqueteTuristico,paramSource, int.class);
+    }
+
+    @Override
+    public int cantidadPersonasEnReservasPorPaqueteTuristico(Long idPaqueteTuristico) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("idPaqueteTuristico", idPaqueteTuristico);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlCantidadPersonasEnReservasPorPaqueteTuristico,paramSource, int.class);
     }
 }
