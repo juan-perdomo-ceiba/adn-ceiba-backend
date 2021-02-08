@@ -5,15 +5,11 @@ import com.ceiba.reserva.comando.ComandoReserva;
 import com.ceiba.reserva.comando.manejador.ManejadorActualizarRserva;
 import com.ceiba.reserva.comando.manejador.ManejadorCrearReserva;
 import com.ceiba.reserva.comando.manejador.ManejadorEliminarReserva;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/reservas")
-@Api(tags = { "Controlador comando reserva"})
-public class ComandoControladorReserva {
+public class ComandoControladorReserva implements ComandoControlador{
 
     private final ManejadorCrearReserva manejadorCrearReserva;
 	private final ManejadorEliminarReserva manejadorEliminarReserva;
@@ -28,21 +24,18 @@ public class ComandoControladorReserva {
 		this.manejadorActualizarRserva = manejadorActualizarRserva;
     }
 
-    @PostMapping
-    @ApiOperation("Crear Rserva")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoReserva comandoReserva) {
+	@Override
+    public ComandoRespuesta<Long> crear(ComandoReserva comandoReserva) {
         return manejadorCrearReserva.ejecutar(comandoReserva);
     }
 
-    @DeleteMapping(value="/{id}")
-	@ApiOperation("Eliminar Reserva")
-	public void eliminar(@PathVariable Long id) {
+	@Override
+	public void eliminar(Long id) {
 		manejadorEliminarReserva.ejecutar(id);
 	}
 
-	@PutMapping(value="/{id}")
-	@ApiOperation("Actualizar Reserva")
-	public void actualizar(@RequestBody ComandoReserva comandoReserva,@PathVariable Long id) {
+	@Override
+	public void actualizar(ComandoReserva comandoReserva, Long id) {
 		comandoReserva.setId(id);
 		manejadorActualizarRserva.ejecutar(comandoReserva);
 	}

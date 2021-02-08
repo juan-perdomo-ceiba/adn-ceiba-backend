@@ -2,18 +2,12 @@ package com.ceiba.reserva.controlador;
 
 import com.ceiba.reserva.consulta.ManejadorListarReservas;
 import com.ceiba.reserva.modelo.dto.DtoReserva;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/reservas")
-@Api(tags={"Controlador consulta reservas"})
-public class ConsultaControladorReserva {
+public class ConsultaControladorReserva implements ConsultaControlador{
 
     private final ManejadorListarReservas manejadorListarReservas;
 
@@ -21,10 +15,8 @@ public class ConsultaControladorReserva {
         this.manejadorListarReservas = manejadorListarReservas;
     }
 
-    @GetMapping
-    @ApiOperation("Listar reservas")
+    @Override
     public List<DtoReserva> listar() {
         return this.manejadorListarReservas.ejecutar();
     }
-
 }

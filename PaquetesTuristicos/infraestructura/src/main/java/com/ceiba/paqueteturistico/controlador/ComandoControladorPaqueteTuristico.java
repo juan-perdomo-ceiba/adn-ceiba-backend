@@ -5,15 +5,11 @@ import com.ceiba.paqueteturistico.comando.ComandoPaqueteTuristico;
 import com.ceiba.paqueteturistico.comando.manejador.ManejadorActualizarPaqueteTuristico;
 import com.ceiba.paqueteturistico.comando.manejador.ManejadorCrearPaqueteTuristico;
 import com.ceiba.paqueteturistico.comando.manejador.ManejadorEliminarPaqueteTuristico;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/paquetes-turisticos")
-@Api(tags = { "Controlador comando paquete turistico"})
-public class ComandoControladorPaqueteTuristico {
+public class ComandoControladorPaqueteTuristico implements ComandoControlador{
 
     private final ManejadorCrearPaqueteTuristico manejadorCrearPaqueteTuristico;
 	private final ManejadorEliminarPaqueteTuristico manejadorEliminarPaqueteTuristico;
@@ -28,21 +24,18 @@ public class ComandoControladorPaqueteTuristico {
 		this.manejadorActualizarPaqueteTuristico = manejadorActualizarPaqueteTuristico;
     }
 
-    @PostMapping
-    @ApiOperation("Crear Paquete Turistico")
-    public ComandoRespuesta<Long> crear(@RequestBody ComandoPaqueteTuristico comandoPaqueteTuristico) {
+	@Override
+    public ComandoRespuesta<Long> crear(ComandoPaqueteTuristico comandoPaqueteTuristico) {
         return manejadorCrearPaqueteTuristico.ejecutar(comandoPaqueteTuristico);
     }
 
-    @DeleteMapping(value="/{id}")
-	@ApiOperation("Eliminar Paquete turistico")
-	public void eliminar(@PathVariable Long id) {
+	@Override
+	public void eliminar(Long id) {
 		manejadorEliminarPaqueteTuristico.ejecutar(id);
 	}
 
-	@PutMapping(value="/{id}")
-	@ApiOperation("Actualizar Paquete Turistico")
-	public void actualizar(@RequestBody ComandoPaqueteTuristico comandoPaqueteTuristico,@PathVariable Long id) {
+	@Override
+	public void actualizar(ComandoPaqueteTuristico comandoPaqueteTuristico, Long id) {
 		comandoPaqueteTuristico.setId(id);
 		manejadorActualizarPaqueteTuristico.ejecutar(comandoPaqueteTuristico);
 	}
