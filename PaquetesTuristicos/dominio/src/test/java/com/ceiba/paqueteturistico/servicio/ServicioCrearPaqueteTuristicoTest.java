@@ -11,7 +11,7 @@ import org.mockito.Mockito;
 public class ServicioCrearPaqueteTuristicoTest {
 
     @Test
-    public void validarUsuarioExistenciaPreviaTest() {
+    public void validarPaqueteTuristicoExistenciaPreviaTest() {
         // arrange
         PaqueteTuristico paqueteTuristico = new PaqueteTuristicoTestDataBuilder().build();
         RepositorioPaqueteTuristico repositorioPaqueteTuristico = Mockito.mock(RepositorioPaqueteTuristico.class);

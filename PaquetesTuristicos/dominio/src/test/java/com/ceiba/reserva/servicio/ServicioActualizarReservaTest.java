@@ -12,7 +12,7 @@ import org.mockito.Mockito;
 public class ServicioActualizarReservaTest {
 
     @Test
-    public void validarUsuarioExistenciaPreviaTest() {
+    public void validarReservaExistenciaPreviaTest() {
         // arrange
         Reserva reserva = new ReservaTestDataBuilder().conId(1L).build();
         RepositorioReserva repositorioReserva = Mockito.mock(RepositorioReserva.class);
