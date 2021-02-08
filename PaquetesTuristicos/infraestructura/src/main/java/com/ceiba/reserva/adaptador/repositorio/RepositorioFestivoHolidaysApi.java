@@ -1,6 +1,6 @@
-package com.ceiba.reserva.adaptador.dao;
+package com.ceiba.reserva.adaptador.repositorio;
 
-import com.ceiba.reserva.puerto.dao.DaoFestivo;
+import com.ceiba.reserva.puerto.repositorio.RepositorioFestivo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
@@ -8,7 +8,7 @@ import org.springframework.web.client.RestTemplate;
 import java.time.LocalDate;
 
 @Component
-public class DaoFestivoHolidaysApi implements DaoFestivo {
+public class RepositorioFestivoHolidaysApi implements RepositorioFestivo {
 
     private final String DIRECCION_BASE = "https://holidays.abstractapi.com/v1/?";
     private final String PAIS = "CO";

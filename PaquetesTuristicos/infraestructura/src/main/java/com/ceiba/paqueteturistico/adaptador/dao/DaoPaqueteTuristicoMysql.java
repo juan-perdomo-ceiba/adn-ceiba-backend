@@ -26,4 +26,5 @@ public class DaoPaqueteTuristicoMysql implements DaoPaqueteTurisico {
     public List<DtoPaqueteTuristico> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoPaqueteTuristico());
     }
+
 }

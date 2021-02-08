@@ -1,0 +1,1 @@
+select count(id) from reserva where id_paquete_turistico = :idPaqueteTuristico
