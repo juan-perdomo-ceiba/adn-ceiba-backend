@@ -2,7 +2,6 @@ package com.ceiba.paqueteturistico.adaptador.repositorio;
 
 import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
-import com.ceiba.paqueteturistico.modelo.dto.DtoPaqueteTuristico;
 import com.ceiba.paqueteturistico.modelo.entidad.PaqueteTuristico;
 import com.ceiba.paqueteturistico.puerto.repositorio.RepositorioPaqueteTuristico;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

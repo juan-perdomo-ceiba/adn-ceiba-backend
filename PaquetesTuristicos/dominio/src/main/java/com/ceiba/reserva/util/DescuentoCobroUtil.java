@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 public class DescuentoCobroUtil {
 
-    public static BigDecimal CINCO_PORCIENTO = new BigDecimal("0.05");
-    public static BigDecimal DIES_PORCIENTO = new BigDecimal("0.1");
-    public static BigDecimal VEINTE_PORCIENTO = new BigDecimal("0.2");
+    public static final BigDecimal CINCO_PORCIENTO = new BigDecimal("0.05");
+    public static final BigDecimal DIES_PORCIENTO = new BigDecimal("0.1");
+    public static final BigDecimal VEINTE_PORCIENTO = new BigDecimal("0.2");
 
     private DescuentoCobroUtil() {}
 

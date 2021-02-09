@@ -3,10 +3,10 @@ package com.ceiba.paqueteturistico.adaptador.dao;
 import com.ceiba.infraestructura.jdbc.MapperResult;
 import com.ceiba.paqueteturistico.modelo.dto.DtoPaqueteTuristico;
 import org.springframework.jdbc.core.RowMapper;
+
 import java.math.BigDecimal;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 public class MapeoPaqueteTuristico implements RowMapper<DtoPaqueteTuristico>, MapperResult {
 
