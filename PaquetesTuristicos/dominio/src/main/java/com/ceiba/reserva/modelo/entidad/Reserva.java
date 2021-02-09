@@ -63,4 +63,21 @@ public class Reserva {
     public void setIdentificadorReserva(String identificadorReserva) {
         this.identificadorReserva = identificadorReserva;
     }
+
+    @Override
+    public String toString() {
+        return "Reserva{" +
+                "id=" + id +
+                ", fechaReserva=" + fechaReserva +
+                ", cedulaCliente='" + cedulaCliente + '\'' +
+                ", nombreCliente='" + nombreCliente + '\'' +
+                ", telefonoCliente='" + telefonoCliente + '\'' +
+                ", emailCliente='" + emailCliente + '\'' +
+                ", numeroPersonas=" + numeroPersonas +
+                ", idPaqueteTuristico=" + idPaqueteTuristico +
+                ", observaciones='" + observaciones + '\'' +
+                ", identificadorReserva='" + identificadorReserva + '\'' +
+                ", precio=" + precio +
+                '}';
+    }
 }

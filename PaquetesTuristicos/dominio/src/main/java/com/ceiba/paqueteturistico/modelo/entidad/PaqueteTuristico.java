@@ -41,4 +41,17 @@ public class PaqueteTuristico {
         this.precioPorPersona = precioPorPersona;
         this.idLugarTuristico = idLugarTuristico;
     }
+
+    @Override
+    public String toString() {
+        return "PaqueteTuristico{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", cantidadMaximaPersonas=" + cantidadMaximaPersonas +
+                ", cantidadMaximaReservas=" + cantidadMaximaReservas +
+                ", precioPorPersona=" + precioPorPersona +
+                ", idLugarTuristico=" + idLugarTuristico +
+                '}';
+    }
 }

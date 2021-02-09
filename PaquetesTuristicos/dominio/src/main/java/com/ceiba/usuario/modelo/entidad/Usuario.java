@@ -35,4 +35,13 @@ public class Usuario {
         this.fechaCreacion = fechaCreacion;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", clave='" + clave + '\'' +
+                ", fechaCreacion=" + fechaCreacion +
+                '}';
+    }
 }

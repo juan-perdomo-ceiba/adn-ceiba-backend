@@ -21,4 +21,13 @@ public class Municipio {
         this.nombre = nombre;
         this.codigo = codigo;
     }
+
+    @Override
+    public String toString() {
+        return "Municipio{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", codigo='" + codigo + '\'' +
+                '}';
+    }
 }
