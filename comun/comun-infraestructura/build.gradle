@@ -21,6 +21,8 @@ dependencies {
 	compile project.ext.apachecommons
 	compile project.ext.swagger
 	compile project.ext.actuator
-	
+
+	compile project.ext.springaop
+
 	implementation project(':comun:comun-dominio')
 }
