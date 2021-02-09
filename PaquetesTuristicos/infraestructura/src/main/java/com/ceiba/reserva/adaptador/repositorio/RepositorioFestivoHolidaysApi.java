@@ -15,23 +15,23 @@ public class RepositorioFestivoHolidaysApi implements RepositorioFestivo {
     private RestTemplate restTemplate;
 
     @Value("${direccionbase}")
-    private String DIRECCION_BASE;
+    private String direccionBase;
     @Value("${pais}")
-    private String PAIS;
+    private String pais;
     @Value("${apikey}")
-    private String API_KEY;
+    private String apiKey;
     @Value("${parampais}")
-    private String PARAM_PAIS;
+    private String paramPais;
     @Value("${paramapikey}")
-    private String PARAM_API_KEY;
+    private String paramApiKey;
     @Value("${paramanio}")
-    private String PARAM_ANIO;
+    private String paramAnio;
     @Value("${parammes}")
-    private String PARAM_MES;
+    private String paramMes;
     @Value("${paramdia}")
-    private String PARAM_DIA;
+    private String paramDia;
     @Value("${concatenadorparam}")
-    private String CONCATENADOR_PARAM;
+    private String concatenadorParam;
 
     @Override
     public boolean validarEsFestivo(LocalDate fecha) {
@@ -41,20 +41,20 @@ public class RepositorioFestivoHolidaysApi implements RepositorioFestivo {
     }
 
     private String buildUrl(LocalDate fecha) {
-        return DIRECCION_BASE +
-                PARAM_API_KEY +
-                API_KEY +
-                CONCATENADOR_PARAM +
-                PARAM_PAIS +
-                PAIS +
-                CONCATENADOR_PARAM +
-                PARAM_ANIO +
+        return direccionBase +
+                paramApiKey +
+                apiKey +
+                concatenadorParam +
+                paramPais +
+                pais +
+                concatenadorParam +
+                paramAnio +
                 fecha.getYear() +
-                CONCATENADOR_PARAM +
-                PARAM_MES +
+                concatenadorParam +
+                paramMes +
                 fecha.getMonthValue() +
-                CONCATENADOR_PARAM +
-                PARAM_DIA +
+                concatenadorParam +
+                paramDia +
                 fecha.getDayOfMonth();
     }
 }
