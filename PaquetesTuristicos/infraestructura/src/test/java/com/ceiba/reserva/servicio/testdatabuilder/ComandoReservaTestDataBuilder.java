@@ -21,7 +21,7 @@ public class ComandoReservaTestDataBuilder {
     private BigDecimal precio;
 
     public ComandoReservaTestDataBuilder() {
-        fechaReserva = LocalDate.now();
+        fechaReserva = LocalDate.of(2020, 12, 26);
         cedulaCliente = "1094955026";
         nombreCliente = "Juan Jose";
         telefonoCliente = "3159687452";
