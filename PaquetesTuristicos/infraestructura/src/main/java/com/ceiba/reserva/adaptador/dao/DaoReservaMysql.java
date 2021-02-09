@@ -4,6 +4,7 @@ import com.ceiba.infraestructura.jdbc.CustomNamedParameterJdbcTemplate;
 import com.ceiba.infraestructura.jdbc.sqlstatement.SqlStatement;
 import com.ceiba.reserva.modelo.dto.DtoReserva;
 import com.ceiba.reserva.puerto.dao.DaoReserva;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class DaoReservaMysql implements DaoReserva {
     @SqlStatement(namespace = NAMESPACE, value="listar")
     private static String sqlListar;
 
+    @SqlStatement(namespace = NAMESPACE, value = "detallarPorIdentificador")
+    private static String sqlDetallaPorIdentificadorr;
+
     public DaoReservaMysql(CustomNamedParameterJdbcTemplate customNamedParameterJdbcTemplate) {
         this.customNamedParameterJdbcTemplate = customNamedParameterJdbcTemplate;
     }
@@ -25,5 +29,12 @@ public class DaoReservaMysql implements DaoReserva {
     @Override
     public List<DtoReserva> listar() {
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().query(sqlListar, new MapeoReserva());
+    }
+
+    @Override
+    public DtoReserva detallarPorIdentificadorReserva(String identificadorReserva) {
+        MapSqlParameterSource paramSource = new MapSqlParameterSource();
+        paramSource.addValue("identificadorReserva", identificadorReserva);
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetallaPorIdentificadorr, paramSource,new MapeoReserva());
     }
 }

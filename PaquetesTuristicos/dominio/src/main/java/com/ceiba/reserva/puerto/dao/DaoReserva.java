@@ -7,4 +7,6 @@ import java.util.List;
 public interface DaoReserva {
 
     List<DtoReserva> listar();
+
+    DtoReserva detallarPorIdentificadorReserva(String identificadorReserva);
 }
