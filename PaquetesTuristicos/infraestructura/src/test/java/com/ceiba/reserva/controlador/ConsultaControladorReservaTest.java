@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.notNullValue;
 import static org.hamcrest.core.Is.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -36,5 +37,15 @@ public class ConsultaControladorReservaTest {
                 .andExpect(jsonPath("$[0].identificadorReserva", is("84813e78-6b94-4bdf-8462-a8c8db96ada8")));
     }
 
+    @Test
+    public void detallarPorIdentificador() throws Exception {
+        // arrange
 
+        // act - assert
+        mocMvc.perform(get("/reservas/84813e78-6b94-4bdf-8462-a8c8db96ada8")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.identificadorReserva", is("84813e78-6b94-4bdf-8462-a8c8db96ada8")));
+    }
 }
