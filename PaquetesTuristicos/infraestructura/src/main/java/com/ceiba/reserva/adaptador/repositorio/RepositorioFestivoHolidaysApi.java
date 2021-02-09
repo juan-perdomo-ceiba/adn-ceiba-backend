@@ -1,46 +1,37 @@
 package com.ceiba.reserva.adaptador.repositorio;
 
-import com.ceiba.configuracion.property.ApiHolliDayProperty;
 import com.ceiba.reserva.puerto.repositorio.RepositorioFestivo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
-import javax.annotation.PostConstruct;
 import java.time.LocalDate;
 
 @Component
 public class RepositorioFestivoHolidaysApi implements RepositorioFestivo {
 
     @Autowired
-    private ApiHolliDayProperty apiHolliDayProperty;
-
-    @Autowired
     private RestTemplate restTemplate;
 
+    @Value("${direccionbase}")
     private String DIRECCION_BASE;
+    @Value("${pais}")
     private String PAIS;
+    @Value("${apikey}")
     private String API_KEY;
+    @Value("${parampais}")
     private String PARAM_PAIS;
+    @Value("${paramapikey}")
     private String PARAM_API_KEY;
+    @Value("${paramanio}")
     private String PARAM_ANIO;
+    @Value("${parammes}")
     private String PARAM_MES;
+    @Value("${paramdia}")
     private String PARAM_DIA;
+    @Value("${concatenadorparam}")
     private String CONCATENADOR_PARAM;
-
-    @PostConstruct
-    public void loadProperties() {
-        this.DIRECCION_BASE = apiHolliDayProperty.getProperty("direccionbase");
-        this.PAIS = apiHolliDayProperty.getProperty("pais");
-        this.API_KEY = apiHolliDayProperty.getProperty("apikey");
-        this.PARAM_PAIS = apiHolliDayProperty.getProperty("parampais");
-        this.PARAM_API_KEY = apiHolliDayProperty.getProperty("paramapikey");
-        this.PARAM_ANIO = apiHolliDayProperty.getProperty("paramanio");
-        this.PARAM_MES = apiHolliDayProperty.getProperty("parammes");
-        this.PARAM_DIA = apiHolliDayProperty.getProperty("paramdia");
-        this.CONCATENADOR_PARAM = apiHolliDayProperty.getProperty("concatenadorparam");
-    }
 
     @Override
     public boolean validarEsFestivo(LocalDate fecha) {
