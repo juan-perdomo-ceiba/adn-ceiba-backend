@@ -2,7 +2,7 @@ package com.ceiba.reserva.util;
 
 import java.math.BigDecimal;
 
-public class DescuentoCobroUtil {
+public final class DescuentoCobroUtil {
 
     public static final BigDecimal CINCO_PORCIENTO = new BigDecimal("0.05");
     public static final BigDecimal DIES_PORCIENTO = new BigDecimal("0.1");
