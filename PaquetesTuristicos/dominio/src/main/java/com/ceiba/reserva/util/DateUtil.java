@@ -3,7 +3,7 @@ package com.ceiba.reserva.util;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class DateUtil {
+public final class DateUtil {
 
     public static final int LUNES = DayOfWeek.MONDAY.getValue();
 
