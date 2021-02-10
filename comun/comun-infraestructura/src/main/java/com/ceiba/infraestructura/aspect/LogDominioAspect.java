@@ -16,7 +16,7 @@ public class LogDominioAspect {
 
     @After(value = "execution(* com.ceiba.*.servicio.*.ejecutar(..)))")
     public void despuesDeEjecutarMetodo(JoinPoint joinPoint) {
-        LOGGER_DOMINIO.info("Se ehecuto metodo: " + joinPoint.getSignature());
+        LOGGER_DOMINIO.info("Se ejecuto metodo: " + joinPoint.getSignature());
 
         Object[] arguments = joinPoint.getArgs();
 

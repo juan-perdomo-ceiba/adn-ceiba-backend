@@ -25,4 +25,15 @@ public class LugarTuristico {
         this.idMunicipio = idMunicipio;
         this.direccion = direccion;
     }
+
+    @Override
+    public String toString() {
+        return "LugarTuristico{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", idMunicipio=" + idMunicipio +
+                ", direccion='" + direccion + '\'' +
+                '}';
+    }
 }
