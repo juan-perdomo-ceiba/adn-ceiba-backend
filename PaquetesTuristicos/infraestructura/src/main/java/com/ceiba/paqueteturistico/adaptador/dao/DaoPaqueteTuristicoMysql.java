@@ -35,7 +35,7 @@ public class DaoPaqueteTuristicoMysql implements DaoPaqueteTurisico {
     public DtoPaqueteTuristico detallar(Long id) {
         MapSqlParameterSource mapSqlParameterSource = new MapSqlParameterSource();
         mapSqlParameterSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlListar, mapSqlParameterSource,new MapeoPaqueteTuristico());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetallar, mapSqlParameterSource,new MapeoPaqueteTuristico());
     }
 
 }
