@@ -23,7 +23,7 @@ allprojects {
 	project.ext.springbootjasypt = ['com.github.ulisesbocchio:jasypt-spring-boot-starter:2.1.1']
 	
 	project.ext.springtxt = [
-							  	"org.springframework:spring-tx:${springVersion}",
+									"org.springframework:spring-tx:${springVersion}",
 							  	"org.springframework:spring-context:${springVersion}"
 							]
 
