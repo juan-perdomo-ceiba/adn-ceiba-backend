@@ -13,5 +13,5 @@ public class ManejadorDetallarReserva {
         this.daoReserva = daoReserva;
     }
 
-    public DtoReserva ejecutar(Long id){ return this.daoReserva.detallarPorIdentificadorReserva(id); }
+    public DtoReserva ejecutar(Long id){ return this.daoReserva.detallar(id); }
 }

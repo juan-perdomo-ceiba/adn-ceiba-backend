@@ -35,16 +35,16 @@ public class DaoReservaMysql implements DaoReserva {
     }
 
     @Override
-    public DtoReserva detallarPorIdentificadorReserva(Long id) {
+    public DtoReserva detallar(Long id) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("id", id);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetallaPorIdentificador, paramSource,new MapeoReserva());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetalla, paramSource,new MapeoReserva());
     }
 
     @Override
     public DtoReserva detallarPorIdentificadorReserva(String identificadorReserva) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
         paramSource.addValue("identificadorReserva", identificadorReserva);
-        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetalla, paramSource,new MapeoReserva());
+        return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetallaPorIdentificador, paramSource,new MapeoReserva());
     }
 }

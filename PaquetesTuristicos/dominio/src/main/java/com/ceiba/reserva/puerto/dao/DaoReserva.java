@@ -8,7 +8,7 @@ public interface DaoReserva {
 
     List<DtoReserva> listar();
 
-    DtoReserva detallarPorIdentificadorReserva(Long id);
+    DtoReserva detallar(Long id);
 
     DtoReserva detallarPorIdentificadorReserva(String identificadorReserva);
 }

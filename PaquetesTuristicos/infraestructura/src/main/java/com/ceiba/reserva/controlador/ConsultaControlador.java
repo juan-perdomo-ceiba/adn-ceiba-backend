@@ -19,7 +19,7 @@ public interface ConsultaControlador {
             notes = "Lista todas la reservas creadas en el sistema")
     List<DtoReserva> listar();
 
-    @GetMapping("detalle/{identificadorReserva}")
+    @GetMapping("/detalle/{identificadorReserva}")
     @ApiOperation(
             value = "Detallar reserva por identificador",
             notes = "Detalla una reserva por identificador unico de reserva creada en el sistema")
