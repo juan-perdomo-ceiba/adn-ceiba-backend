@@ -48,7 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(username -> mapUsuario(daoUsuario.detallePorUsuario(username)));
+        auth.userDetailsService(username -> mapUsuario(daoUsuario.detallePorUsuario(username))).passwordEncoder(new BCryptPasswordEncoder());
     }
 
 
