@@ -54,7 +54,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http = http.csrf().disable();
+        http = http.csrf().ignoringAntMatchers("/autenticacion").and();
         // Set session management to stateless
         http = http
                 .sessionManagement()
@@ -74,6 +74,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // Set permissions on endpoints
         http.authorizeRequests()
+                // Swagger endpoints must be publicly accessible
+                .antMatchers("/").permitAll()
                 // Our public endpoints
                 .antMatchers(HttpMethod.POST, "/autenticacion").permitAll()
                 .antMatchers(HttpMethod.GET, "/paquetes-turisticos/**").permitAll()
