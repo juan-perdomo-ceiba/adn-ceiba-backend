@@ -54,7 +54,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http = http.csrf().ignoringAntMatchers("/autenticacion").and();
+        http = http.csrf().ignoringAntMatchers("/autenticacion",
+                "/paquetes-turisticos/**",
+                "/paquetes-turisticos",
+                "/lugares-turisticos",
+                "/lugares-turisticos/**",
+                "/reservas",
+                "/reservas/**",
+                "/municipios").and();
         // Set session management to stateless
         http = http
                 .sessionManagement()
