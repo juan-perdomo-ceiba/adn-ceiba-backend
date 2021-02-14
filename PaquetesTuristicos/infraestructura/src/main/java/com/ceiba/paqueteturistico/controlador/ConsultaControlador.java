@@ -4,6 +4,7 @@ import com.ceiba.paqueteturistico.modelo.dto.DtoPaqueteTuristico;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -17,4 +18,10 @@ public interface ConsultaControlador {
             value = "Listar paquetes turisticos",
             notes = "Lista todos los paquetes turisticos existentes en el sistema")
     List<DtoPaqueteTuristico> listar();
+
+    @GetMapping("/{id}")
+    @ApiOperation(
+            value = "obtener por id",
+            notes = "Detalla un paquete turistico por id")
+    DtoPaqueteTuristico detallar(@PathVariable Long id);
 }

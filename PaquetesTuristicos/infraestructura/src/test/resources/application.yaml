@@ -6,4 +6,5 @@ spring:
       password:
       hikari:
          poolName: pool
-
+   security:
+      ignored: /**

@@ -7,4 +7,6 @@ import java.util.List;
 public interface DaoLugarTuristico {
 
     List<DtoLugarTuristico> listar();
+
+    DtoLugarTuristico detallar(Long id);
 }
