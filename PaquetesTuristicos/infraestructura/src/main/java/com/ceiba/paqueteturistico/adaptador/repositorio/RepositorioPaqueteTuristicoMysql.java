@@ -74,7 +74,7 @@ public class RepositorioPaqueteTuristicoMysql implements RepositorioPaqueteTuris
     @Override
     public PaqueteTuristico obtener(Long idPaqueteTuristico) {
         MapSqlParameterSource paramSource = new MapSqlParameterSource();
-        paramSource.addValue("idPaqueteTuristico", idPaqueteTuristico);
+        paramSource.addValue("id", idPaqueteTuristico);
         return this.customNamedParameterJdbcTemplate.getNamedParameterJdbcTemplate().queryForObject(sqlDetallar, paramSource, new MapeoPaqueteTuristico());
     }
 }

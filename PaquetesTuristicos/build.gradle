@@ -41,6 +41,12 @@ allprojects {
 	project.ext.h2 = ["com.h2database:h2:1.4.194"]
 
 	project.ext.springaop = ["org.springframework.boot:spring-boot-starter-aop:${springBootVersion}"]
+
+	project.ext.springsecurity = ["org.springframework.boot:spring-boot-starter-security:${springBootVersion}"]
+
+	project.ext.sringsecuritytest = ["org.springframework.securit:spring-security-test:${springVersion}"]
+
+	project.ext.jwt = ["io.jsonwebtoken:jjwt:0.9.1"]
 }
 
 buildscript {

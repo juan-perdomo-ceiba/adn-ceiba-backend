@@ -3,11 +3,11 @@ package com.ceiba.lugarturistico.controlador;
 import com.ceiba.ApplicationMock;
 import com.ceiba.lugarturistico.comando.ComandoLugarTuristico;
 import com.ceiba.lugarturistico.servicio.testdatabuilder.ComandoLugarTuristicoTestDataBuilder;
-import com.ceiba.usuario.controlador.ComandoControladorUsuario;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ContextConfiguration;
@@ -21,6 +21,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringRunner.class)
 @ContextConfiguration(classes = ApplicationMock.class)
 @WebMvcTest(ComandoControladorLugarTuristico.class)
+@AutoConfigureMockMvc(addFilters = false)
 public class ComandoControladorLugarTuristicoTest {
 
     @Autowired

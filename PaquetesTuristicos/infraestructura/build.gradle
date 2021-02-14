@@ -22,7 +22,9 @@ dependencies {
 	runtimeOnly project.ext.db
 	testImplementation project.ext.flywaytest
 
-	
+	implementation project.ext.springsecurity
+	implementation project.ext.jwt
+
 	implementation project(':dominio')
 	implementation project(':aplicacion')
 
