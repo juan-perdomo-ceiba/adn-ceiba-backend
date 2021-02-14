@@ -25,7 +25,6 @@ public class Usuario implements UserDetails, Serializable {
     public Usuario(String username, String password) {
         this.username = username;
         this.password = password;
-        this.enabled = false;
     }
 
     public Usuario(Long id, String username, String password) {
