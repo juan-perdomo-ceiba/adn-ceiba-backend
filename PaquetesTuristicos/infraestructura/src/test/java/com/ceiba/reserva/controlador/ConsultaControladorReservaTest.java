@@ -40,11 +40,23 @@ public class ConsultaControladorReservaTest {
     }
 
     @Test
+    public void detallar() throws Exception {
+        // arrange
+        Long id = 1L;
+        // act - assert
+        mocMvc.perform(get("/reservas/{id}", id)
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", notNullValue()))
+                .andExpect(jsonPath("$.id", is(1)));
+    }
+
+    @Test
     public void detallarPorIdentificador() throws Exception {
         // arrange
-
+        String identificador = "84813e78-6b94-4bdf-8462-a8c8db96ada8";
         // act - assert
-        mocMvc.perform(get("/reservas/detalle/84813e78-6b94-4bdf-8462-a8c8db96ada8")
+        mocMvc.perform(get("/reservas/detalle/{identificador}", identificador)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$", notNullValue()))

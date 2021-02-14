@@ -1,6 +1,8 @@
 package com.ceiba.reserva.modelo.entidad;
 
 
+import com.ceiba.reserva.util.DateUtil;
+import com.ceiba.reserva.util.DescuentoCobroUtil;
 import lombok.Getter;
 
 import java.math.BigDecimal;
@@ -9,7 +11,7 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
 public class Reserva {
-
+    private static final int MINIMA_CANTIDAD_PERSONAS_APLICA_DESCUENTO = 5;
     private static final String SE_DEBE_INGRESAR_LA_FECHA_RESERVA = "Se debe ingresar la fecha de reserva";
     private static final String SE_DEBE_INGRESAR_CEDULA_CLIENTE = "Se debe ingresar la cedula del cliente";
     private static final String SE_DEBE_INGRESAR_NOMBRE_CLIENTE = "Se debe ingresar el nombre del cliente";
@@ -54,6 +56,9 @@ public class Reserva {
         this.observaciones= observaciones;
         this.identificadorReserva = identificadorReserva;
         this.precio = precio;
+
+        aplicarDescuentoPorCantidadPersonas();
+        aplicarDescuentoPorDiaReserva();
     }
 
     public void setPrecio(BigDecimal precio) {
@@ -62,6 +67,18 @@ public class Reserva {
 
     public void setIdentificadorReserva(String identificadorReserva) {
         this.identificadorReserva = identificadorReserva;
+    }
+
+    private void aplicarDescuentoPorCantidadPersonas() {
+        if(this.numeroPersonas > MINIMA_CANTIDAD_PERSONAS_APLICA_DESCUENTO) {
+            this.precio = DescuentoCobroUtil.aplicarDescuento(this.precio, DescuentoCobroUtil.CINCO_PORCIENTO);
+        }
+    }
+
+    private void aplicarDescuentoPorDiaReserva() {
+        if(DateUtil.compararDia(this.fechaReserva, DateUtil.LUNES)) {
+            this.precio = DescuentoCobroUtil.aplicarDescuento(this.precio, DescuentoCobroUtil.DIES_PORCIENTO);
+        }
     }
 
     @Override
