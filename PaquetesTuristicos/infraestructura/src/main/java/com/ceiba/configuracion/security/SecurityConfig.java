@@ -21,7 +21,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.http.HttpServletResponse;
-import java.util.TreeSet;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
@@ -31,7 +30,7 @@ import java.util.TreeSet;
 )
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private static final Logger LOGGER_SEGURIDAD = LoggerFactory.getLogger(SecurityConfig.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(SecurityConfig.class);
     private final JwtTokenFilter jwtTokenFilter;
     private final DaoUsuario daoUsuario;
 
@@ -55,9 +54,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        // Enable CORS and disable CSRF
-        http = http.cors().and().csrf().disable();
-
         // Set session management to stateless
         http = http
                 .sessionManagement()
@@ -69,7 +65,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling()
                 .authenticationEntryPoint(
                         (request, response, ex) -> {
-                            LOGGER_SEGURIDAD.error("Unauthorized request - {}", ex.getMessage());
+                            LOGGER.error("Unauthorized request - {}", ex.getMessage());
                             response.sendError(HttpServletResponse.SC_UNAUTHORIZED, ex.getMessage());
                         }
                 )
@@ -97,6 +93,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     }
 
     private UserDetails mapUsuario(DtoUsuario usuario) {
-        return new Usuario(usuario.getId(), usuario.getNombre(), usuario.getClave(), new TreeSet<>());
+        return new Usuario(usuario.getId(), usuario.getNombre(), usuario.getClave());
     }
 }

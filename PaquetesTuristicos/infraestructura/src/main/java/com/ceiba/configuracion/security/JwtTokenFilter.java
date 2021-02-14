@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.TreeSet;
 
 import static org.springframework.util.StringUtils.isEmpty;
 
@@ -66,6 +65,6 @@ public class JwtTokenFilter extends OncePerRequestFilter {
     }
 
     private UserDetails mapUsuario(DtoUsuario usuario) {
-       return new Usuario(usuario.getId(), usuario.getNombre(), usuario.getClave(), new TreeSet<>());
+       return new Usuario(usuario.getId(), usuario.getNombre(), usuario.getClave());
     }
 }
