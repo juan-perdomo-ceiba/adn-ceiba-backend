@@ -35,7 +35,6 @@ public class RepositorioFestivoHolidaysApi implements RepositorioFestivo {
 
     @Override
     public boolean validarEsFestivo(LocalDate fecha) {
-        String path = buildUrl(fecha);
         Object[] response = restTemplate.getForObject(buildUrl(fecha), Object[].class);
         return response != null && response.length > 0;
     }

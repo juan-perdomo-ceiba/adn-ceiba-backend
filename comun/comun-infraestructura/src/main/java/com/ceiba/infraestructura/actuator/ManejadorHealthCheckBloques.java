@@ -16,7 +16,7 @@ public class ManejadorHealthCheckBloques {
 
 	private Map<String, Salud> bloquesRegistrados = new HashMap<>();
 	private List<ErrorHealthCheck> listadoErroresBloques = new ArrayList<>();
-	private static final Logger LOGGER_ERROR = LoggerFactory.getLogger(ManejadorHealthCheckBloques.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(ManejadorHealthCheckBloques.class);
 	private static final String MENSAJE_ERROR_EN_BLOQUE = "Error de conexion con el bloque ";
 
 	public void registrarme(String nombreBloque, Salud salud) {
@@ -34,7 +34,7 @@ public class ManejadorHealthCheckBloques {
 			salud.verificar();
 			this.listadoErroresBloques = new ArrayList<>();
 		} catch (RuntimeException e) {
-			LOGGER_ERROR.error(MENSAJE_ERROR_EN_BLOQUE + key);
+			LOGGER.error(MENSAJE_ERROR_EN_BLOQUE + key);
 			this.listadoErroresBloques = new ArrayList<>();
 			this.listadoErroresBloques.add(new ErrorHealthCheck(key));
 		}

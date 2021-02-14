@@ -50,7 +50,7 @@ public class DataAccessFieldCallback implements FieldCallback {
 
 		// -- Carpeta
 		String fileName;
-		if (namespace != null && !namespace.trim().equals("")) {
+		if (namespace != null && !"".equals(namespace.trim())) {
 			fileName = namespace.contains("sql.") ? (namespace.replace(".", SLASH) + SLASH + value)
 					: ("sql/" + namespace.replace(".", SLASH) + SLASH + value);
 		} else {

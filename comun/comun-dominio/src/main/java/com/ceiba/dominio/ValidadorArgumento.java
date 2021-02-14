@@ -11,7 +11,7 @@ import com.ceiba.dominio.excepcion.ExcepcionLongitudValor;
 import com.ceiba.dominio.excepcion.ExcepcionValorInvalido;
 import com.ceiba.dominio.excepcion.ExcepcionValorObligatorio;
 
-public class ValidadorArgumento {
+public final class ValidadorArgumento {
 	
 	private ValidadorArgumento() {}
 
