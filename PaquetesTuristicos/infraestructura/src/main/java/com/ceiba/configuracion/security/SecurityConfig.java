@@ -62,13 +62,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 "/reservas",
                 "/reservas/**",
                 "/municipios").and();
-        // Set session management to stateless
+
         http = http
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and();
 
-        // Set unauthorized requests exception handler
         http = http
                 .exceptionHandling()
                 .authenticationEntryPoint(
@@ -79,19 +78,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 )
                 .and();
 
-        // Set permissions on endpoints
         http.authorizeRequests()
-                // Swagger endpoints must be publicly accessible
-                .antMatchers("/").permitAll()
-                // Our public endpoints
-                .antMatchers(HttpMethod.POST, "/autenticacion").permitAll()
-                .antMatchers(HttpMethod.GET, "/paquetes-turisticos/**").permitAll()
-                .antMatchers(HttpMethod.POST, "/reservas").permitAll()
-                .antMatchers(HttpMethod.GET, "/reservas/detalle/**").permitAll()
-                // Our private endpoints
+                .antMatchers("/").anonymous()
+                .antMatchers(HttpMethod.POST, "/autenticacion").anonymous()
+                .antMatchers(HttpMethod.GET, "/paquetes-turisticos/**").anonymous()
+                .antMatchers(HttpMethod.POST, "/reservas").anonymous()
+                .antMatchers(HttpMethod.GET, "/reservas/detalle/**").anonymous()
                 .anyRequest().authenticated();
 
-        // Add JWT token filter
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
