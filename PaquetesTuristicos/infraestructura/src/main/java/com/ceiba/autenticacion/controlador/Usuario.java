@@ -1,6 +1,7 @@
 package com.ceiba.autenticacion.controlador;
 
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.io.Serializable;
@@ -35,7 +36,7 @@ public class Usuario implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.emptyList();
+        return AuthorityUtils.createAuthorityList("admin");
     }
 
     @Override
