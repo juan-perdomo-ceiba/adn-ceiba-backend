@@ -79,11 +79,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and();
 
         http.authorizeRequests()
-                .antMatchers("/").anonymous()
-                .antMatchers(HttpMethod.POST, "/autenticacion").anonymous()
-                .antMatchers(HttpMethod.GET, "/paquetes-turisticos/**").anonymous()
-                .antMatchers(HttpMethod.POST, "/reservas").anonymous()
-                .antMatchers(HttpMethod.GET, "/reservas/detalle/**").anonymous()
+                .antMatchers("/").hasIpAddress("127.0.0.1")
+                .antMatchers(HttpMethod.POST, "/autenticacion").hasIpAddress("127.0.0.1")
+                .antMatchers(HttpMethod.GET, "/paquetes-turisticos/**").hasIpAddress("127.0.0.1")
+                .antMatchers(HttpMethod.POST, "/reservas").hasIpAddress("127.0.0.1")
+                .antMatchers(HttpMethod.GET, "/reservas/detalle/**").hasIpAddress("127.0.0.1")
                 .anyRequest().authenticated();
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
