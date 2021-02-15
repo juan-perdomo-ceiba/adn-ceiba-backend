@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
 @Api(tags = { "Controlador comando autenticacion"})
 public class ComandoControladorAutenticacion {
 
-    private Logger LOGGER = LoggerFactory.getLogger(ComandoControladorAutenticacion.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(ComandoControladorAutenticacion.class);
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
 

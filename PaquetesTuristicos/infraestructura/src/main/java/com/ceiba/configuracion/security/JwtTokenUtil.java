@@ -1,11 +1,9 @@
 package com.ceiba.configuracion.security;
 
 import com.ceiba.autenticacion.controlador.Usuario;
-import com.ceiba.usuario.modelo.dto.DtoUsuario;
 import io.jsonwebtoken.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -13,24 +11,24 @@ import java.util.Date;
 @Component
 public class JwtTokenUtil {
 
-    private static final String jwtSecret = "zdtlD3JK56m6wTTgsNFhqzjqP";
-    private static final String jwtIssuer = "juan.perdomo";
+    private static final String JWT_SECRET = "zdtlD3JK56m6wTTgsNFhqzjqP";
+    private static final String JWT_ISSUER = "juan.perdomo";
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtTokenUtil.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JwtTokenUtil.class);
 
     public String generateAccessToken(Usuario usuario) {
         return Jwts.builder()
                 .setSubject(String.format("%s,%s", usuario.getId(), usuario.getUsername()))
-                .setIssuer(jwtIssuer)
+                .setIssuer(JWT_ISSUER)
                 .setIssuedAt(new Date())
                 .setExpiration(new Date(System.currentTimeMillis() + 7 * 24 * 60 * 60 * 1000)) // 1 week
-                .signWith(SignatureAlgorithm.HS512, jwtSecret)
+                .signWith(SignatureAlgorithm.HS512, JWT_SECRET)
                 .compact();
     }
 
     public String getUserId(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(JWT_SECRET)
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -39,7 +37,7 @@ public class JwtTokenUtil {
 
     public String getUsername(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(JWT_SECRET)
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -48,7 +46,7 @@ public class JwtTokenUtil {
 
     public Date getExpirationDate(String token) {
         Claims claims = Jwts.parser()
-                .setSigningKey(jwtSecret)
+                .setSigningKey(JWT_SECRET)
                 .parseClaimsJws(token)
                 .getBody();
 
@@ -57,7 +55,7 @@ public class JwtTokenUtil {
 
     public boolean validate(String token) {
         try {
-            Jwts.parser().setSigningKey(jwtSecret).parseClaimsJws(token);
+            Jwts.parser().setSigningKey(JWT_SECRET).parseClaimsJws(token);
             return true;
         } catch (SignatureException ex) {
             logger.error("Invalid JWT signature - {}", ex.getMessage());
