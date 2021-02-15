@@ -84,7 +84,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/paquetes-turisticos/**").hasIpAddress("127.0.0.1")
                 .antMatchers(HttpMethod.POST, "/reservas").hasIpAddress("127.0.0.1")
                 .antMatchers(HttpMethod.GET, "/reservas/detalle/**").hasIpAddress("127.0.0.1")
-                .anyRequest().authenticated();
+                .anyRequest().hasAnyAuthority();
 
         http.addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
