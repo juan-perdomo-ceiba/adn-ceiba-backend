@@ -3,12 +3,18 @@ package com.ceiba.lugarturistico.controlador;
 import com.ceiba.lugarturistico.consulta.ManejadorDetallarLugarTuristico;
 import com.ceiba.lugarturistico.consulta.ManejadorListarLugaresTuristicos;
 import com.ceiba.lugarturistico.modelo.dto.DtoLugarTuristico;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class ConsultaControladorLugarTuristico implements ConsultaControlador {
+@RequestMapping("/lugares-turisticos")
+@Api(tags = { "Controlador consulta lugar turistico"})
+public class ConsultaControladorLugarTuristico {
 
     private final ManejadorListarLugaresTuristicos manejadorListarLugaresTUristicos;
     private final ManejadorDetallarLugarTuristico manejadorDetallarLugarTuristico;
@@ -18,12 +24,18 @@ public class ConsultaControladorLugarTuristico implements ConsultaControlador {
         this.manejadorDetallarLugarTuristico = manejadorDetallarLugarTuristico;
     }
 
-    @Override
+    @GetMapping
+    @ApiOperation(
+            value = "Listar Lugares Turisticos",
+            notes = "Lista los lugares turisticos existentes en el sistema")
     public List<DtoLugarTuristico> listar() {
         return this.manejadorListarLugaresTUristicos.ejecutar();
     }
 
-    @Override
+    @GetMapping("/{id}")
+    @ApiOperation(
+            value = "Detallar lugar turistico",
+            notes = "Lista un lugar turistico existente en el sistema por id")
     public DtoLugarTuristico detallar(Long id) {
         return this.manejadorDetallarLugarTuristico.ejecutar(id);
     }
