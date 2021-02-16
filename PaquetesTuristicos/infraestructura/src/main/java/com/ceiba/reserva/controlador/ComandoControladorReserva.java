@@ -33,7 +33,7 @@ public class ComandoControladorReserva {
 			value = "Crear Rserva",
 			notes = "Realiza la creacion de una reserva en el sistema"
 	)
-    public ComandoRespuesta<Long> crear(ComandoReserva comandoReserva) {
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoReserva comandoReserva) {
         return manejadorCrearReserva.ejecutar(comandoReserva);
     }
 
@@ -41,7 +41,7 @@ public class ComandoControladorReserva {
 	@ApiOperation(
 			value = "Eliminar Reserva",
 			notes = "Eliminan una reserva en el sistema")
-	public void eliminar(Long id) {
+	public void eliminar(@PathVariable Long id) {
 		manejadorEliminarReserva.ejecutar(id);
 	}
 
@@ -49,7 +49,7 @@ public class ComandoControladorReserva {
 	@ApiOperation(
 			value = "Actualizar Reserva",
 			notes = "Realiza la actualizacion de una reserva en el sistema")
-	public void actualizar(ComandoReserva comandoReserva, Long id) {
+	public void actualizar(@RequestBody ComandoReserva comandoReserva, @PathVariable Long id) {
 		comandoReserva.setId(id);
 		manejadorActualizarRserva.ejecutar(comandoReserva);
 	}
