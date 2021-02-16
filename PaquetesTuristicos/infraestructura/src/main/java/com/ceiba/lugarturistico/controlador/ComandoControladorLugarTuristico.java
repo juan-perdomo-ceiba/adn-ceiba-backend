@@ -32,7 +32,7 @@ public class ComandoControladorLugarTuristico {
 	@ApiOperation(
 			value = "Crear lugar turistico",
 			notes = "Realiza la creacion de un lugar turistico en el sistema")
-    public ComandoRespuesta<Long> crear(ComandoLugarTuristico comandoLugarTuristico) {
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoLugarTuristico comandoLugarTuristico) {
         return manejadorCrearLugarTuristico.ejecutar(comandoLugarTuristico);
     }
 
@@ -40,7 +40,7 @@ public class ComandoControladorLugarTuristico {
 	@ApiOperation(
 			value = "Eliminar lugar turistico",
 			notes = "Elimina un lugar turistico existente en el sistema")
-	public void eliminar(Long id) {
+	public void eliminar(@PathVariable  Long id) {
 		manejadorEliminarLugarTuristico.ejecutar(id);
 	}
 
@@ -48,7 +48,7 @@ public class ComandoControladorLugarTuristico {
 	@ApiOperation(
 			value = "Actualizar lugar turistico",
 			notes = "Realiza la actualizacion de un lugar turistico en el sistema")
-	public void actualizar(ComandoLugarTuristico comandoLugarTuristico, Long id) {
+	public void actualizar(@RequestBody ComandoLugarTuristico comandoLugarTuristico, @PathVariable Long id) {
 		comandoLugarTuristico.setId(id);
 		manejadorActualizarLugarTuristico.ejecutar(comandoLugarTuristico);
 	}

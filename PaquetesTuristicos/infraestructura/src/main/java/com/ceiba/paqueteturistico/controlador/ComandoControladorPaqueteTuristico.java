@@ -32,7 +32,7 @@ public class ComandoControladorPaqueteTuristico {
 	@ApiOperation(
 			value = "Crear Paquete Turistico",
 			notes = "Realiza la creacion de un paquete turistico en el sistema")
-    public ComandoRespuesta<Long> crear(ComandoPaqueteTuristico comandoPaqueteTuristico) {
+    public ComandoRespuesta<Long> crear(@RequestBody ComandoPaqueteTuristico comandoPaqueteTuristico) {
         return manejadorCrearPaqueteTuristico.ejecutar(comandoPaqueteTuristico);
     }
 
@@ -40,7 +40,7 @@ public class ComandoControladorPaqueteTuristico {
 	@ApiOperation(
 			value = "Eliminar Paquete turistico",
 			notes = "Elimina un paquete turistico en el sistema")
-	public void eliminar(Long id) {
+	public void eliminar(@PathVariable Long id) {
 		manejadorEliminarPaqueteTuristico.ejecutar(id);
 	}
 
@@ -48,7 +48,7 @@ public class ComandoControladorPaqueteTuristico {
 	@ApiOperation(
 			value = "Actualizar Paquete Turistico",
 			notes = "Reliza la actualizacion de un paquete turistico en el sistema")
-	public void actualizar(ComandoPaqueteTuristico comandoPaqueteTuristico, Long id) {
+	public void actualizar(@RequestBody ComandoPaqueteTuristico comandoPaqueteTuristico, @PathVariable Long id) {
 		comandoPaqueteTuristico.setId(id);
 		manejadorActualizarPaqueteTuristico.ejecutar(comandoPaqueteTuristico);
 	}

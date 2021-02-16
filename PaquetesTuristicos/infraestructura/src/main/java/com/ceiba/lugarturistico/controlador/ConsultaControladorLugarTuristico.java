@@ -6,6 +6,7 @@ import com.ceiba.lugarturistico.modelo.dto.DtoLugarTuristico;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -36,7 +37,7 @@ public class ConsultaControladorLugarTuristico {
     @ApiOperation(
             value = "Detallar lugar turistico",
             notes = "Lista un lugar turistico existente en el sistema por id")
-    public DtoLugarTuristico detallar(Long id) {
+    public DtoLugarTuristico detallar(@PathVariable Long id) {
         return this.manejadorDetallarLugarTuristico.ejecutar(id);
     }
 }
