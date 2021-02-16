@@ -43,7 +43,7 @@ public class ComandoControladorAutenticacion {
             return ResponseEntity.ok()
                     .body(autenticacionResponse);
         } catch (BadCredentialsException ex) {
-            LOGGER.error(ex.getMessage());
+            LOGGER.error(ex.getMessage(), ex);
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
