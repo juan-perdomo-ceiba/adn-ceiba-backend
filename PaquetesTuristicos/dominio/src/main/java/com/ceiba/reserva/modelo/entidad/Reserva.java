@@ -11,7 +11,7 @@ import static com.ceiba.dominio.ValidadorArgumento.validarObligatorio;
 
 @Getter
 public class Reserva {
-    private static final int MINIMA_CANTIDAD_PERSONAS_APLICA_DESCUENTO = 5;
+    private static final int MINIMA_CANTIDAD_PERSONAS_APLICA_DESCUENTO = 4;
     private static final String SE_DEBE_INGRESAR_LA_FECHA_RESERVA = "Se debe ingresar la fecha de reserva";
     private static final String SE_DEBE_INGRESAR_CEDULA_CLIENTE = "Se debe ingresar la cedula del cliente";
     private static final String SE_DEBE_INGRESAR_NOMBRE_CLIENTE = "Se debe ingresar el nombre del cliente";

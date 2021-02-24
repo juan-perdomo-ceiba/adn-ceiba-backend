@@ -1,0 +1,32 @@
+version: '3.7'
+
+services:
+  app-server:
+    image: adn-jperdomo:latest
+    ports:
+      - "8090:8080"
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    depends_on:
+      - db
+    networks:
+      - net
+  db:
+    image: mysql:5.7
+    ports:
+      - "33066:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: reservasejecafetero
+      MYSQL_USER: juanperdomo
+      MYSQL_PASSWORD: 123fenix
+      MYSQL_ROOT_PASSWORD: root
+    networks:
+      - net
+volumes:
+  db-data:
+
+networks:
+  net:

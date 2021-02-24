@@ -14,10 +14,8 @@ spring:
    datasource:
       driver-class-name: com.mysql.cj.jdbc.Driver
       type: com.zaxxer.hikari.HikariDataSource
-      jdbcUrl: jdbc:mysql://localhost:3306/reservasejecafetero
+      jdbcUrl: jdbc:mysql://db:3306/reservasejecafetero
       username: juanperdomo
       password: 123fenix
       hikari:
          poolName: pool
-   profiles:
-      active: azure
